@@ -1,7 +1,7 @@
 {
-  "name": "pg10",
+  "name": "insurancecrm",
   "version": "1.0.0",
-  "description": "Scratch and win",
+  "description": "A Call center CRM dashboard for Insurance Company",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -11,7 +11,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [
-    "pg10",
+    "insurance",
     "softechinfra"
   ],
   "author": "vivek",
