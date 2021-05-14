@@ -185,8 +185,14 @@ const sendLoginKey = (req,res,user) => {
 // /api/auth/user/loginWithPassword
 router.post('/user/loginWithPassword',(req,res) => {
   let password = req.body.password
-  if(req.body.mobileNo && req.body.password){
-    User.findOne({ mobileNo:req.body.mobileNo} )
+  if(req.body.loginId && req.body.password){
+    User.findOne({ 
+      "$or": [{
+        mobileNo:req.body.loginId
+      }, {
+        emailId:req.body.loginId
+      }]
+      })
     .then(user => {
       if (user) {
   // getting payment info 
@@ -202,7 +208,7 @@ router.post('/user/loginWithPassword',(req,res) => {
           })
           .catch(err => console.log(`error in password matching in login:${err}`));
   } else {
-    res.json({ message: "Wrong Mobile Number", variant: "error" });
+    res.json({ message: "Incorrect LoginId", variant: "error" });
   }
     })
     .catch(err => console.log(`error in login username match ${err}`));
